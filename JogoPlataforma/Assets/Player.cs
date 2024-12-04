@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float Speed;
+    public const float defaultSpeed = 3;
+    public const float runningSpeed = 5;
+    public float Speed = defaultSpeed;
     private Rigidbody2D rig;
     public float jumpForce;
 
@@ -25,11 +27,13 @@ public class Player : MonoBehaviour
     {
         Move();
         Jump();
+        Befriend();
     }
 
     void Move()
     {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+        if (Input.GetKey("left shift") || Input.GetKey("right shift")){Speed = runningSpeed;} else {Speed = defaultSpeed;}
         transform.position += movement * Time.deltaTime * Speed;
         if (Input.GetAxis("Horizontal") != 0)
         {
@@ -80,6 +84,36 @@ public class Player : MonoBehaviour
         }
     }
 
-
+     void Befriend()
+    {
+        // Verifica se a tecla 'B' foi pressionada (não importa se a tecla foi solta depois)
+        if (Input.GetButtonDown("Fire1"))
+        {
+            anim.SetBool("befriend", true);
+        }
+        // Verifica se a animação terminou
+        //if (isAttacking && !anim.GetCurrentAnimatorStateInfo(0).IsName("Fire1"))
+        else
+        {
+            // Quando a animação "Fire1" terminar, desmarque a flag
+            anim.SetBool("befriend", false);
+        }
+    }
+/*
+    void Shield()
+    {
+        // Verifica se a tecla 'B' foi pressionada (não importa se a tecla foi solta depois)
+        if (Input.GetKey("n"))
+        {
+            anim.SetBool("shield", true);
+        }
+        // Verifica se a animação terminou
+        //if (isAttacking && !anim.GetCurrentAnimatorStateInfo(0).IsName("Fire1"))
+        else
+        {
+            // Quando a animação "Fire1" terminar, desmarque a flag
+            anim.SetBool("shield", false);
+        }
+    } */
 }
 

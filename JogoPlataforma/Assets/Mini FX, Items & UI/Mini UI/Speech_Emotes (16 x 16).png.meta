@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f293e98648899fe47968989a847c5f36
+guid: 78e31c02555d106418afceb3fef785e3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Running (32 x 32)_0
+      name: Speech_Emotes (16 x 16)_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 32
-        height: 32
+        width: 14
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2403cf62f5afbc94c8c671cc0b5e635b
-      internalID: -199376935
+      spriteID: cd409bb46df2ca54ba07f2a44e60250b
+      internalID: 662910241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Running (32 x 32)_1
+      name: Speech_Emotes (16 x 16)_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 17
         y: 0
-        width: 32
-        height: 32
+        width: 14
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 466550ec9e3277b4597362e659e5512c
-      internalID: 1243536329
+      spriteID: f8689bbd90bed544eae9dcf336f5685d
+      internalID: 1792210847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Running (32 x 32)_2
+      name: Speech_Emotes (16 x 16)_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 33
         y: 0
-        width: 32
-        height: 32
+        width: 14
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2316573471f1c24a8b4a9f4ba602438
-      internalID: -1308283386
+      spriteID: 3fb24f749bfb8a94e9c27d7d4abc1ad9
+      internalID: 123324876
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Running (32 x 32)_3
+      name: Speech_Emotes (16 x 16)_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 49
         y: 0
-        width: 32
-        height: 32
+        width: 14
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18229f5c6de4e6947a27eed5afbb8995
-      internalID: 1459794978
+      spriteID: d19d910d7812d744aa3e5fe317157702
+      internalID: 1213807917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speech_Emotes (16 x 16)_4
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 0
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 797ad5b9a25259345a25542e70e628ea
+      internalID: -1524540657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speech_Emotes (16 x 16)_5
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 0
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d113351997cd1d4383531c4883d75d7
+      internalID: -1751524953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speech_Emotes (16 x 16)_6
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 0
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8e5a3cc3c191ef488ddaed7dda1744d
+      internalID: 1190962997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speech_Emotes (16 x 16)_7
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 0
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dde254b6735a4b4e9609d047b4fe444
+      internalID: 2120390963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speech_Emotes (16 x 16)_8
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 0
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcfb9733b69af9f4cab21424013d538c
+      internalID: -380351100
       vertices: []
       indices: 
       edges: []
@@ -204,10 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Running (32 x 32)_0: -199376935
-      Running (32 x 32)_1: 1243536329
-      Running (32 x 32)_2: -1308283386
-      Running (32 x 32)_3: 1459794978
+      Speech_Emotes (16 x 16)_0: 662910241
+      Speech_Emotes (16 x 16)_1: 1792210847
+      Speech_Emotes (16 x 16)_2: 123324876
+      Speech_Emotes (16 x 16)_3: 1213807917
+      Speech_Emotes (16 x 16)_4: -1524540657
+      Speech_Emotes (16 x 16)_5: -1751524953
+      Speech_Emotes (16 x 16)_6: 1190962997
+      Speech_Emotes (16 x 16)_7: 2120390963
+      Speech_Emotes (16 x 16)_8: -380351100
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
