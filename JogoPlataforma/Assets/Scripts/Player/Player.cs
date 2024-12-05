@@ -86,13 +86,12 @@ public class Player : MonoBehaviour
 
      void Befriend()
     {
-        // Verifica se a tecla 'B' foi pressionada (não importa se a tecla foi solta depois)
+        // Verifica se a tecla 'F' foi pressionada (não importa se a tecla foi solta depois)
         if (Input.GetButtonDown("Fire1"))
         {
             anim.SetBool("befriend", true);
         }
-        // Verifica se a animação terminou
-        //if (isAttacking && !anim.GetCurrentAnimatorStateInfo(0).IsName("Fire1"))
+
         else
         {
             // Quando a animação "Fire1" terminar, desmarque a flag
