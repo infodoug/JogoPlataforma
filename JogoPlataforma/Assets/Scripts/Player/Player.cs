@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     public bool isJumping;
 
-    private Animator anim;
+    public Animator anim;
 
     //private bool isAttacking = false;
     // Start is called before the first frame update
@@ -83,6 +83,8 @@ public class Player : MonoBehaviour
             isJumping = true;
         }
     }
+
+
 
      void Befriend()
     {

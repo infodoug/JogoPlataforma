@@ -35,7 +35,7 @@ public class Feet : MonoBehaviour
                 
                 //baratinha.anim.SetBool("hurt", true);
                 // Usa a força de pulo do Player
-                player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, player.jumpForce*2), ForceMode2D.Impulse);
+                player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 13), ForceMode2D.Impulse);
             }
         }
     }
