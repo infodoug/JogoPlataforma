@@ -6,6 +6,7 @@ public class Body : MonoBehaviour
 {
     private Player player;
     private BoxCollider box;
+    private bool hasLostLife = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +23,9 @@ public class Body : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Baratinha"))
+        if (collision.CompareTag("Baratinha") && !hasLostLife)
         {
+            hasLostLife = true;
             player.anim.SetBool("hurt", true);
 
             // Calcula a direção oposta com base na posição relativa
@@ -39,19 +41,25 @@ public class Body : MonoBehaviour
             }
 
             // Define a força do impulso, ajustando a intensidade
-            float forceX = 1f;
-            float forceY = 3f;
+            float forceX = 3f;
+            float forceY = 4f;
             Vector2 force = new Vector2(simpledirection * forceX, forceY);
 
             // Aplica a força ao Rigidbody2D do player
             player.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+
+            player.LooseLife(1);
+            StartCoroutine(player.BlockMovement(1.2f));
         }
+
+
     }
     
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Baratinha"))
         {
+            hasLostLife = false;
             player.anim.SetBool("hurt", false);
         }
     }

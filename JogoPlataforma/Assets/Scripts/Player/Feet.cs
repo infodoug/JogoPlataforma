@@ -38,5 +38,15 @@ public class Feet : MonoBehaviour
                 player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 13), ForceMode2D.Impulse);
             }
         }
+        if (collision.CompareTag("Ground"))
+        {
+            player.anim.SetBool("jump", false);
+        }
+        if (collision.CompareTag("Oil"))
+        {
+            player.anim.SetBool("hurt", true);
+            player.LooseLife(player.lifes);
+            player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 25), ForceMode2D.Impulse);
+        }
     }
 }

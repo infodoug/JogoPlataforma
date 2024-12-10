@@ -14,18 +14,26 @@ public class Player : MonoBehaviour
 
     public Animator anim;
 
+    public int lifes = 2;
+
+    public bool canMove = true;
+
     //private bool isAttacking = false;
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (canMove)
+        {
         Move();
+        }
         Jump();
         Befriend();
     }
@@ -99,6 +107,31 @@ public class Player : MonoBehaviour
             // Quando a animação "Fire1" terminar, desmarque a flag
             anim.SetBool("befriend", false);
         }
+    }
+
+    public void LooseLife(int num)
+    {
+        if (lifes == 0) {
+            return;
+        }
+        else {
+            lifes = lifes - num;
+            Debug.Log(lifes);
+            anim.SetBool("walk", false);
+            anim.SetBool("jump", false);
+            anim.SetBool("hurt", true);
+        }
+
+    }
+
+    public IEnumerator BlockMovement(float time)
+    {
+        canMove = false; // Desativa o movimento
+        anim.SetBool("walk", false);
+        anim.SetBool("jump", false);
+        anim.SetBool("hurt", true);
+        yield return new WaitForSeconds(time); // Espera o tempo definido
+        canMove = true; // Ativa o movimento novamente    
     }
 /*
     void Shield()
