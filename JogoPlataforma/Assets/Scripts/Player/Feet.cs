@@ -41,6 +41,7 @@ public class Feet : MonoBehaviour
         if (collision.CompareTag("Ground"))
         {
             player.anim.SetBool("jump", false);
+            player.isJumping = false;
         }
         if (collision.CompareTag("Oil"))
         {

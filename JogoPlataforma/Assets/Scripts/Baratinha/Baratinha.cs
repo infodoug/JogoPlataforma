@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
 
 public class Baratinha : MonoBehaviour
 {
@@ -27,20 +29,43 @@ public class Baratinha : MonoBehaviour
         anim.SetBool("hurt", false);
     } */
 
+    public IEnumerator Wait(float time, Action function)
+    {
+        yield return new WaitForSeconds(time); // Espera o tempo definido   
+
+        function();
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            justHurt = true;
-            anim.SetBool("hurt", true);
+            if (justHurt)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                justHurt = true;
+                anim.SetBool("hurt", true);
+            }
         }
+    }
+
+    public void StopHurt()
+    {
+        anim.SetBool("hurt", false);
+        justHurt = false;
     }
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            justHurt = false;
-            anim.SetBool("hurt", false);
+            StartCoroutine(
+                Wait(1f, StopHurt)
+ 
+                );
+
         }
     }
 }

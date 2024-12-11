@@ -49,7 +49,7 @@ public class Body : MonoBehaviour
             player.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
 
             player.LooseLife(1);
-            StartCoroutine(player.BlockMovement(1.2f));
+            StartCoroutine(player.BlockMovement(1f));
         }
 
 

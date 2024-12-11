@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HeartSystem : MonoBehaviour
 {
@@ -13,11 +14,9 @@ public class HeartSystem : MonoBehaviour
     public Sprite full;
     public Sprite empty;
 
-    private Control cameraControl;
     // Start is called before the first frame update
     void Start()
     {
-        cameraControl = GetComponentInParent<Control>();
         player = GetComponentInParent<Player>();
         life = player.lifes;
         maxLife = 2;
@@ -31,11 +30,22 @@ public class HeartSystem : MonoBehaviour
         HealthLogic();
     }
 
+    public void ResetGame()
+    {
+        StartCoroutine(ResetAfterDelay(0.5f));
+    }
+
+    private IEnumerator ResetAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     void HealthLogic()
     {
         if (life == 0)
         {
-            cameraControl.ResetGame();
+            ResetGame();
         }
         if (life > maxLife)
         {
