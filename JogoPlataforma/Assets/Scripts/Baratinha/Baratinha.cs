@@ -9,25 +9,20 @@ public class Baratinha : MonoBehaviour
     public bool justHurt;
     private Rigidbody2D rig;
     public Animator anim;
+    private Spawner spawner;
+
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        spawner = GetComponentInParent<Spawner>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //getHurt();
     }
-
-/*     public void getHurt()
-    {
-        
-        anim.SetBool("hurt", true);
-        anim.SetBool("hurt", false);
-    } */
 
     public IEnumerator Wait(float time, Action function)
     {
@@ -42,7 +37,9 @@ public class Baratinha : MonoBehaviour
         {
             if (justHurt)
             {
-                Destroy(gameObject);
+                Destroy(spawner.instancia);
+                spawner.quantidade -= 1;
+                spawner.Spawn();
             }
             else
             {
@@ -66,6 +63,17 @@ public class Baratinha : MonoBehaviour
  
                 );
 
+        }
+    }
+
+    // Função chamada quando o GameObject é reativado
+    void OnEnable()
+    {
+        // Aqui verificamos se o inimigo já estava ferido antes de ser desativado.
+        if (justHurt)
+        {
+            // Se ele já estava ferido, ainda deve ter a animação "hurt" ativa ao ser reativado.
+            anim.SetBool("hurt", false);
         }
     }
 }
