@@ -30,12 +30,16 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canMove)
+        if (Time.timeScale != 0)
         {
-        Move();
+            if (canMove)
+            {
+            Move();
+            }
+            Jump();
+            Befriend();
         }
-        Jump();
-        Befriend();
+
     }
 
     void Move()
