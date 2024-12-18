@@ -18,12 +18,15 @@ public class Player : MonoBehaviour
 
     public bool canMove = true;
 
+    public Vector3 initialPosition;
+
     //private bool isAttacking = false;
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        initialPosition = transform.position;
 
     }
 

@@ -47,7 +47,8 @@ public class Feet : MonoBehaviour
         {
             player.anim.SetBool("hurt", true);
             player.LooseLife(player.lifes);
-            player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 25), ForceMode2D.Impulse);
+            StartCoroutine(player.BlockMovement(2f));
+            //player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 3), ForceMode2D.Impulse);
         }
     }
 }

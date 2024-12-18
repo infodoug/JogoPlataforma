@@ -14,6 +14,8 @@ public class HeartSystem : MonoBehaviour
     public Sprite full;
     public Sprite empty;
 
+    [SerializeField] private GameObject textGameOver;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,20 +34,31 @@ public class HeartSystem : MonoBehaviour
 
     public void ResetGame()
     {
-        StartCoroutine(ResetAfterDelay(0.5f));
+
     }
 
     private IEnumerator ResetAfterDelay(float delay)
     {
+        yield return new WaitForSeconds(delay-0.2f);
+        player.anim.SetBool("hurt", false);
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        textGameOver.SetActive(false);
+        player.transform.position = player.initialPosition;
+        player.lifes = maxLife;
+        
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void HealthLogic()
     {
         if (life == 0)
         {
-            ResetGame();
+            textGameOver.SetActive(true);
+            StartCoroutine(ResetAfterDelay(0.8f));
+            
+
+
+            
         }
         if (life > maxLife)
         {
