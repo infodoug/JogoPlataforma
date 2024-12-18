@@ -7,6 +7,7 @@ public class Body : MonoBehaviour
     private Player player;
     private BoxCollider box;
     private bool hasLostLife = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,10 @@ public class Body : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Trash"))
+        {
+            player.currentTrash++;
+        }
         if (collision.CompareTag("Baratinha") && !hasLostLife)
         {
             hasLostLife = true;

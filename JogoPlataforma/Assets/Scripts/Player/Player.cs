@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
 
     public Vector3 initialPosition;
 
+    public int currentTrash = 0;
+
     //private bool isAttacking = false;
     // Start is called before the first frame update
     void Start()
