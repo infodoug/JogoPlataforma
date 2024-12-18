@@ -24,10 +24,7 @@ public class Body : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Trash"))
-        {
-            player.currentTrash++;
-        }
+
         if (collision.CompareTag("Baratinha") && !hasLostLife)
         {
             hasLostLife = true;
@@ -62,6 +59,10 @@ public class Body : MonoBehaviour
     
     void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.CompareTag("Trash"))
+        {
+            player.currentTrash++;
+        }
         if (collision.CompareTag("Baratinha"))
         {
             hasLostLife = false;

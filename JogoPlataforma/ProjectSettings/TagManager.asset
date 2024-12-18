@@ -8,6 +8,7 @@ TagManager:
   - Baratinha
   - PlayerFeet
   - Oil
+  - Trash
   layers:
   - Default
   - TransparentFX

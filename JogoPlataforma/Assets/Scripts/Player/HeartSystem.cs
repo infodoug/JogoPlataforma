@@ -44,6 +44,8 @@ public class HeartSystem : MonoBehaviour
         yield return new WaitForSeconds(delay);
         textGameOver.SetActive(false);
         player.transform.position = player.initialPosition;
+        player.isJumping = true;
+        player.anim.SetBool("jump", true);
         player.lifes = maxLife;
         
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

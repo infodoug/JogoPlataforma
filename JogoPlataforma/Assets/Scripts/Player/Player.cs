@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     public Vector3 initialPosition;
 
     public int currentTrash = 0;
+    public Text textTrash;
 
     //private bool isAttacking = false;
     // Start is called before the first frame update
@@ -43,6 +45,8 @@ public class Player : MonoBehaviour
             }
             Jump();
             Befriend();
+
+            textTrash.text = currentTrash.ToString();
         }
 
     }
