@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
             Move();
             }
             Jump();
-            Befriend();
+            //Recicle();
 
             textTrash.text = currentTrash.ToString();
         }
@@ -108,20 +108,7 @@ public class Player : MonoBehaviour
 
 
 
-     void Befriend()
-    {
-        // Verifica se a tecla 'F' foi pressionada (não importa se a tecla foi solta depois)
-        if (Input.GetButtonDown("Fire1"))
-        {
-            anim.SetBool("befriend", true);
-        }
 
-        else
-        {
-            // Quando a animação "Fire1" terminar, desmarque a flag
-            anim.SetBool("befriend", false);
-        }
-    }
 
     public void LooseLife(int num)
     {

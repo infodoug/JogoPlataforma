@@ -7,6 +7,7 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private string gameScene;
     [SerializeField] private GameObject targetObject;
+    [SerializeField] private GameObject pauseMenu;
     // Start is called before the first frame update
     public void Jogar()
     {
@@ -19,6 +20,7 @@ public class Menu : MonoBehaviour
             Time.timeScale = 1;
             if (targetObject != null)
             {
+                pauseMenu.SetActive(false);
                 targetObject.SetActive(true); // Desativa o GameObject
                 Debug.Log("GameObject ativado!");
             }
@@ -28,6 +30,7 @@ public class Menu : MonoBehaviour
             Time.timeScale = 0;
             if (targetObject != null)
             {
+                pauseMenu.SetActive(true);
                 targetObject.SetActive(false); // Desativa o GameObject
                 Debug.Log("GameObject desativado!");
             }
