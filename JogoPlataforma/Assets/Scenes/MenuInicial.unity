@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameScene: Fase1
+  menuInicial: MenuInicial
+  targetObject: {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!4 &93647494
 Transform:
   m_ObjectHideFlags: 0

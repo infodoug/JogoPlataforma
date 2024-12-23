@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     [SerializeField] private string gameScene;
+    [SerializeField] private string menuInicial;
     [SerializeField] private GameObject targetObject;
     [SerializeField] private GameObject pauseMenu;
     // Start is called before the first frame update
     public void Jogar()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(gameScene);
     }
 

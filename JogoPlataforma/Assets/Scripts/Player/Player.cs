@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class Player : MonoBehaviour
     public bool balloon = false;
     [SerializeField] private GameObject balloonItem;
     public float count;
+
+    [SerializeField] private string menuInicial;
 
     //private bool isAttacking = false;
     // Start is called before the first frame update
@@ -57,17 +60,49 @@ public class Player : MonoBehaviour
         {
             balloon = true;
         }
+        else
+        {
+            balloon = false;
+        }
         if (balloon)
         {
+            rig.gravityScale = 2f;
+        // Detecta se a tecla Espaço está sendo pressionada
+        if (Input.GetKey(KeyCode.Space))
+        {
+            
+            // Aplica força para cima enquanto o botão está pressionado
+            if (transform.position.y < 10f) // Limita a altura máxima
+            {
+                rig.AddForce(new Vector3(0, 9f, 0), ForceMode2D.Force);
+                //rig.AddForce(Vector3.up * 10f, ForceMode2D.Force);
+            }
+            if (rig.velocity.y < 10f) // Limita a velocidade de subida
+            {
+                rig.AddForce(Vector3.up * 9f, ForceMode2D.Force);
+            }
+        }
+            //isJumping = false;
             count += Time.deltaTime; // Subtrai o tempo que passou desde o último frame
             if (count >= 10f) // Quando o tempo acabar, desativa o item
             {
                 balloonItem.SetActive(false);
                 count = 0f; // Garante que o valor não fique negativo
+                
             }
+        }
+        else
+        {
+            rig.gravityScale = 4f;
         }
 
     }
+
+    public void Resetar()
+    {
+        SceneManager.LoadScene(menuInicial);
+    }
+
 
     void Move()
     {
@@ -152,6 +187,8 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(time); // Espera o tempo definido
         canMove = true; // Ativa o movimento novamente    
     }
+
+
 /*
     void Shield()
     {
