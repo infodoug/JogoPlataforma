@@ -18,7 +18,7 @@ public class RecicleMenu : MonoBehaviour
         Recicle();
     }
 
-    void OpenOrCloseMenu()
+    public void OpenOrCloseMenu()
     {
         if (menu.activeSelf)
         {

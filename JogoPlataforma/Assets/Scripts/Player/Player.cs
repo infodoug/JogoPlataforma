@@ -24,6 +24,10 @@ public class Player : MonoBehaviour
     public int currentTrash = 0;
     public Text textTrash;
 
+    public bool balloon = false;
+    [SerializeField] private GameObject balloonItem;
+    public float count;
+
     //private bool isAttacking = false;
     // Start is called before the first frame update
     void Start()
@@ -47,6 +51,20 @@ public class Player : MonoBehaviour
             //Recicle();
 
             textTrash.text = currentTrash.ToString();
+        }
+
+        if (balloonItem.activeSelf)
+        {
+            balloon = true;
+        }
+        if (balloon)
+        {
+            count += Time.deltaTime; // Subtrai o tempo que passou desde o último frame
+            if (count >= 10f) // Quando o tempo acabar, desativa o item
+            {
+                balloonItem.SetActive(false);
+                count = 0f; // Garante que o valor não fique negativo
+            }
         }
 
     }
