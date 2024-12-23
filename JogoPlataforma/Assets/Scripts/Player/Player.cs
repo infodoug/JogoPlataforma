@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
         {
             
             // Aplica força para cima enquanto o botão está pressionado
-            if (transform.position.y < 10f) // Limita a altura máxima
+            if (transform.position.y < 5f) // Limita a altura máxima
             {
                 rig.AddForce(new Vector3(0, 9f, 0), ForceMode2D.Force);
                 //rig.AddForce(Vector3.up * 10f, ForceMode2D.Force);

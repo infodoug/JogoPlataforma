@@ -11,6 +11,12 @@ public class Baratinha : MonoBehaviour
     public Animator anim;
     private Spawner spawner;
 
+    public float speed;
+    public bool ground = true;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +28,13 @@ public class Baratinha : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        ground = Physics2D.Linecast(groundCheck.position, transform.position, groundLayer);
+
+        if (ground == false)
+        {
+            speed *= -1;
+        }
     }
 
     public IEnumerator Wait(float time, Action function)
@@ -47,6 +60,8 @@ public class Baratinha : MonoBehaviour
                 anim.SetBool("hurt", true);
             }
         }
+
+
     }
 
     public void StopHurt()
