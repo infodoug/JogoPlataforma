@@ -183,6 +183,12 @@ public class Baratinha : MonoBehaviour
             // Aplica a força ao Rigidbody2D do player
             rig.AddForce(force, ForceMode2D.Impulse);
         }
+        if (collision.gameObject.layer == 11)
+        {
+            Destroy(spawner.instancia);
+            spawner.quantidade -= 1;
+            spawner.Spawn();
+        }
     }
 
     // Função chamada quando o GameObject é reativado
