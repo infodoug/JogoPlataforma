@@ -16,6 +16,8 @@ public class Baratinha : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
 
+    public bool facingRight = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,15 @@ public class Baratinha : MonoBehaviour
         if (ground == false)
         {
             speed *= -1;
+        }
+
+        if (speed > 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (speed < 0 && facingRight)
+        {
+            Flip();
         }
     }
 
@@ -81,6 +92,33 @@ public class Baratinha : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 10)
+        {
+            Debug.Log("bateu!");
+            // Calcula a direção oposta com base na posição relativa
+            Vector2 direction = (transform.position - collision.transform.position).normalized;
+            int simpledirection;
+            if (direction.x > 0)
+            {
+                simpledirection = 1;
+            }
+            else
+            {
+                simpledirection = -1;
+            }
+
+            // Define a força do impulso, ajustando a intensidade
+            float forceX = 1f;
+            float forceY = 2f;
+            Vector2 force = new Vector2(simpledirection * forceX, forceY);
+
+            // Aplica a força ao Rigidbody2D do player
+            rig.AddForce(force, ForceMode2D.Impulse);
+        }
+    }
+
     // Função chamada quando o GameObject é reativado
     void OnEnable()
     {
@@ -90,5 +128,13 @@ public class Baratinha : MonoBehaviour
             // Se ele já estava ferido, ainda deve ter a animação "hurt" ativa ao ser reativado.
             anim.SetBool("hurt", false);
         }
+    }
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 Scale = transform.localScale;
+        Scale.x *= -1;
+        transform.localScale = Scale;
     }
 }
