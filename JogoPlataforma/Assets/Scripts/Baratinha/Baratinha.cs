@@ -22,6 +22,8 @@ public class Baratinha : MonoBehaviour
     public float distanciaPara = 0.2f;
     public bool isChasing = false;
 
+    public string alvoDirection;
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,7 @@ public class Baratinha : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float distanceToPlayer = alvo.position.x - transform.position.x;
         if (!ground)
         {
             isChasing = false;
@@ -47,16 +50,25 @@ public class Baratinha : MonoBehaviour
 
             if (ground == false)
             {
-                Debug.Log("fora");
+                //Debug.Log("fora");
                 speed *= -1;
             }
+
+        if (speed > 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (speed < 0 && facingRight)
+        {
+            Flip();
+        }
         }
         if (isChasing)
         {
             ground = Physics2D.Linecast(groundCheck.position, transform.position, groundLayer);
             if (ground == false)
             {
-                Debug.Log("fora!!");
+                //Debug.Log("fora!!");
                 speed *= -1;
             }
             if (Vector2.Distance(transform.position, alvo.position) > distanciaPara)
@@ -68,17 +80,30 @@ public class Baratinha : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, new Vector2(alvo.position.x, transform.position.y), speed * Time.deltaTime);
 
             }
-            
+            if (distanceToPlayer > 0)
+            {
+                facingRight = true;
+                Vector3 Scale = transform.localScale;
+                if (Scale.x < 0)
+                {
+                    Scale.x *= -1;
+                }
+                
+                transform.localScale = Scale;
+            }
+            else if (distanceToPlayer < 0)
+            {
+                facingRight = false;
+                Vector3 Scale = transform.localScale;
+                if (Scale.x > 0)
+                {
+                Scale.x *= -1;
+                }
+                transform.localScale = Scale;
+            }
         }        
 
-        if (speed > 0 && !facingRight)
-        {
-            Flip();
-        }
-        else if (speed < 0 && facingRight)
-        {
-            Flip();
-        }
+
     }
 
     public IEnumerator Wait(float time, Action function)
