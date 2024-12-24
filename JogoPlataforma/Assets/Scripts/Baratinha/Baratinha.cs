@@ -38,6 +38,10 @@ public class Baratinha : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (speed != 0)
+        {
+            anim.SetBool("walk", true);
+        }
         float distanceToPlayer = alvo.position.x - transform.position.x;
         if (!ground)
         {
@@ -138,16 +142,18 @@ public class Baratinha : MonoBehaviour
         anim.SetBool("hurt", false);
         justHurt = false;
         isChasing = true;
-
+        speed = 1;
     }
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            speed = 0;
             StartCoroutine(
                 Wait(1f, StopHurt)
  
                 );
+            
 
         }
     }
