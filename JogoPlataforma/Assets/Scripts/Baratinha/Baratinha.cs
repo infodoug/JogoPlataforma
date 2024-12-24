@@ -18,6 +18,10 @@ public class Baratinha : MonoBehaviour
 
     public bool facingRight = true;
 
+    public Transform alvo;
+    public float distanciaPara = 0.2f;
+    public bool isChasing = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,18 +29,47 @@ public class Baratinha : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spawner = GetComponentInParent<Spawner>();
+
+        alvo = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
-        ground = Physics2D.Linecast(groundCheck.position, transform.position, groundLayer);
-
-        if (ground == false)
+        if (!ground)
         {
-            speed *= -1;
+            isChasing = false;
         }
+        if (!isChasing)
+        {
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            ground = Physics2D.Linecast(groundCheck.position, transform.position, groundLayer);
+
+            if (ground == false)
+            {
+                Debug.Log("fora");
+                speed *= -1;
+            }
+        }
+        if (isChasing)
+        {
+            ground = Physics2D.Linecast(groundCheck.position, transform.position, groundLayer);
+            if (ground == false)
+            {
+                Debug.Log("fora!!");
+                speed *= -1;
+            }
+            if (Vector2.Distance(transform.position, alvo.position) > distanciaPara)
+            {
+                if (speed < 0)
+                {
+                    speed *= -1;
+                }
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(alvo.position.x, transform.position.y), speed * Time.deltaTime);
+
+            }
+            
+        }        
 
         if (speed > 0 && !facingRight)
         {
@@ -79,6 +112,8 @@ public class Baratinha : MonoBehaviour
     {
         anim.SetBool("hurt", false);
         justHurt = false;
+        isChasing = true;
+
     }
     void OnTriggerExit2D(Collider2D collision)
     {

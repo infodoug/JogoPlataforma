@@ -223,3 +223,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  facingRight: 1
+  alvo: {fileID: 0}
+  distanciaPara: 0.2
+  isChasing: 0
